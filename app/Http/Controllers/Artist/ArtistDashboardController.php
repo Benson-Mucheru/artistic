@@ -8,7 +8,6 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MusicUploadRequest;
 use App\Models\Music;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class ArtistDashboardController extends Controller
@@ -20,8 +19,8 @@ class ArtistDashboardController extends Controller
 
     public function music($id) : View {
         $artist = Artist::findOrFail($id);
-        $songs = $artist->songs;
-        return view('artist.dash.music', ['artistData' => $artist, 'artistSongs' => $songs]);
+        $songs = $artist->songs->all();
+        return view('artist.dash.music', ['artistData' => $artist, 'artistSongs' => $songs[0]]);
     }
 
     public function fans($id) : View {
