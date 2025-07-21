@@ -16,13 +16,14 @@ Route::post('/artist/login', [ArtistLoginController::class, 'store']);
 Route::post('/artist/logout', [ArtistLoginController::class, 'destroy']);
 Route::post('/send', [ArtistSignupController::class, 'store']);
 
-Route::get('/artist/{id}/dashboard', [ArtistDashboardController::class, 'dashboard'])->middleware([CreatorLogin::class]);
-Route::get('/artist/{id}/music', [ArtistDashboardController::class, 'music'])->middleware([CreatorLogin::class]);
-Route::get('/artist/{id}/fans', [ArtistDashboardController::class, 'fans'])->middleware([CreatorLogin::class]);
-Route::get('/artist/{id}/earning', [ArtistDashboardController::class, 'earning'])->middleware([CreatorLogin::class]);
-Route::get('/artist/{id}/edit', [ArtistDashboardController::class, 'edit'])->middleware([CreatorLogin::class]);
-Route::get('/artist/{id}/music-add', [ArtistDashboardController::class, 'music_add'])->middleware([CreatorLogin::class]);
-Route::post('/artist/{id}/music-upload', [ArtistDashboardController::class, 'music_upload'])->middleware([CreatorLogin::class]);
-
+Route::middleware([CreatorLogin::class])->controller(ArtistDashboardController::class)->group(function(){
+    Route::get('/artist/{id}/dashboard' , 'dashboard');
+    Route::get('/artist/{id}/music' , 'music');
+    Route::get('/artist/{id}/fans' , 'fans');
+    Route::get('/artist/{id}/earnings' , 'earnings');
+    Route::get('/artist/{id}/edit' , 'edit');
+    Route::get('/artist/{id}/music-add' , 'music_add');
+    Route::post('/artist/{id}/music-upload' , 'music_upload');
+});
 
 Route::get('/fan', [FanController::class, 'index']);
