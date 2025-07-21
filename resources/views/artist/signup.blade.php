@@ -32,7 +32,7 @@
                         @enderror
                     </x-inputs.input-container>
                 </div>
-                <x-buttons.blue type="submit">Create</x-buttons.blue>
+                <x-buttons.blue class="w-full mt-2" type="submit">Create</x-buttons.blue>
                 <div class="text-center">
                     <p class=" pt-4 ">Already have an account? <x-nav.nav-link href="/artist/login" class="text-blue-900">Log in</x-nav.nav-link> </p>
                 </div>

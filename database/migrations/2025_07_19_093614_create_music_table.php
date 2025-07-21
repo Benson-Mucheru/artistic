@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('artists', function(Blueprint $table){
+        Schema::create('music', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('email');
-            $table->string('profile_path');
-            $table->string('password');
+            $table->foreignUuid('artist_id')->constrained(table : 'artists',);
+            $table->string('title');
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('music');
     }
 };

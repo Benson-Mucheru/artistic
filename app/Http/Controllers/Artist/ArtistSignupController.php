@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArtistSignupController extends Controller
 {
@@ -30,6 +31,7 @@ class ArtistSignupController extends Controller
         Artist::create([
             'name' => $validatedData['artistname'], 
             'email' => $validatedData['email'],
+            'profile_path' => Storage::url('images/profile-image.webp'),
             'password' => Hash::make($validatedData['password'])
         ]);
         

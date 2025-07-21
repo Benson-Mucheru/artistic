@@ -20,7 +20,7 @@
                         @enderror
                     </x-inputs.input-container>
                 </div>
-                <x-buttons.blue type="submit">Login</x-buttons.blue>
+                <x-buttons.blue class="w-full mt-2" type="submit">Login</x-buttons.blue>
                 @error('login-error')
                     <div class="text-red-600 italic">{{$message}}</div>
                 @enderror

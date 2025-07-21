@@ -9,6 +9,10 @@ class Artist extends Authenticatable
 {
     use HasUuids;
     protected $fillable = [
-        'name', 'email', 'password'
+        'name', 'email', 'profile_path', 'password'
     ];
+
+    public function songs () {
+        return $this->hasOne(Music::class);
+    }
 }
