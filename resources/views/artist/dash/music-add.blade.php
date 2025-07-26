@@ -5,9 +5,13 @@
             <x-inputs.input-field method="post" action="/artist/{{$artistData->id}}/music-upload" enctype="multipart/form-data">
                 <x-inputs.input-container>
                     <x-inputs.input-label>Title</x-inputs.input-label>
-                    <x-inputs.input-type type="text" name="title" />
+                    <x-inputs.input-type type="text" name="title" value="{{old('title')}}" />
                     @error('title')
                         <p class="text-red-500">{{$message}}</p>
+                     @enderror
+
+                     @error('song_exists')
+                         <p class="text-red-500">{{$message}}</p>
                      @enderror
                 </x-inputs.input-container>
                 
