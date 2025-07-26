@@ -9,15 +9,15 @@
         
         <div>
             <div class="border-2 border-black rounded-2xl p-3">
-                <h2 class="text-xl">Music List</h2>
+                <h2 class="text-xl">Music Library</h2>
                 <ul>
                     @if ($artistSongs == null)
                         <div>No Songs</div>
                     @else
-                        <li class="py-1">1. {{$artistSongs->title}} <audio src="{{asset($artistSongs->path)}}" controls class="w-full rounded-2xl"></audio></li>
-                    <li class="py-1">2. Ante Up <audio src="{{asset('storage/music/2.mp3')}}" controls class="w-full rounded-2xl">You Comfort Me</audio></li>
-                    <li class="py-1">3. Pini <audio src="{{asset('storage/music/3.mp3')}}" controls class="w-full rounded-2xl">You Comfort Me</audio></li>
-                    <li class="py-1">4. Ujuelegba <audio src="{{asset('storage/music/4.mp3')}}" controls class="w-full rounded-2xl">You Comfort Me</audio></li>
+                        @props(['number' => 0])
+                        @foreach ($artistSongs as $song)
+                            <li class="py-1">{{$number += 1}}. {{$song->title}} <audio src="{{asset($song->path)}}" controls class="w-full rounded-2xl"></audio></li> 
+                        @endforeach
                     @endif
                 </ul>
             </div>
