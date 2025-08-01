@@ -8,7 +8,7 @@
                         <x-inputs.input-label for="email">Email</x-inputs.input-label>
                         <x-inputs.input-type type="email" name="email" placeholder="test@gmail.com" value="{{old('email')}}" />
                         @error('email')
-                            <div class="text-red-500 italic">{{$message}}</div>
+                            <x-error.error-message>{{$message}}</x-error.error-message>
                         @enderror
                     </x-inputs.input-container> 
         
@@ -16,13 +16,13 @@
                         <x-inputs.input-label for="password">Password</x-inputs.input-label>
                         <x-inputs.input-type type="password" name="password" />
                         @error('password')
-                            <div class="text-red-500 italic">{{$message}}</div>
+                            <x-error.error-message>{{$message}}</x-error.error-message>
                         @enderror
                     </x-inputs.input-container>
                 </div>
                 <x-buttons.blue class="w-full mt-2" type="submit">Login</x-buttons.blue>
                 @error('login-error')
-                    <div class="text-red-600 italic">{{$message}}</div>
+                    <x-error.error-message>{{$message}}</x-error.error-message>
                 @enderror
                 <div class="text-center pt-4">
                     <x-nav.nav-link href="/artist/login" class="text-blue-900">Forgot your password?</x-nav.nav-link> 
