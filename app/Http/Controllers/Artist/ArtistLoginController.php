@@ -18,7 +18,7 @@ class ArtistLoginController extends Controller
 
     public function store(ArtistLoginRequest $request) : RedirectResponse {
         $attributes = $request->validated();
-        if(Auth::attempt($attributes)){
+        if(Auth::guard('artist')->attempt($attributes)){
             $artistId = Artist::firstWhere('email', $attributes['email'])->id;
             $request->session()->regenerate();
             Auth::guard('artist')->loginUsingId($artistId);
