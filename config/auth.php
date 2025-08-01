@@ -44,6 +44,11 @@ return [
         'artist' => [
             'driver' => 'session',
             'provider' => 'artists'
+        ],
+
+        'fan' => [
+            'driver' => 'session',
+            'provider' => 'fans'
         ]
     ],
 
@@ -73,6 +78,11 @@ return [
         'artists' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\Artist::class),
+        ],
+
+        'fans' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Fan::class),
         ]
 
         // 'users' => [
